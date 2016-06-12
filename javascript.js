@@ -93,4 +93,41 @@
 
 
     // This and That: Scope
+
+        // scope chain, which means that a function inside another function can access a variable defined in its parent function.
+
+	    var var1 = 'this is a global and is available to everyone';
+
+	    function function1() {
+	        var var2 = 'this is only available inside function1 and function2';
+
+	        function function2() {
+                var var3 = 'this is only available inside function2'
+	        }
+	    }
+
+        // in a browser, 'this' references the window object
+        // If we're inside an object, 'this' will refer to the object itself
+        // if you're inside a function, this will still refer to the window object
+        // if you're inside a method that is within an object, 'this' will refer to the object
+
+        // As a side note, it's also worth adding that when using functions like setInterval, setTimeout and eval, when you execute a function or method via one of these, 'this' refers to the window object as these are methods of window, so setInterval() and window.setInterval() are the same.
+
+	    function addEvent(to, type, fn) {
+	        // Check if addEventListener is supported
+	        if (document.addEventListener) {
+	            to.addEventListener(type, fn, false);
+	        } else if (document.attachEvent) {
+	            to.attachEvent('on' + type, fn);
+	        } else {
+	            to['on' + type] = fn;
+	        }
+	    };
+        // to is the DOM object we are attaching the event to
+        // type is the type of event
+        // fn is the functio run when the event is triggered.
+
+
+
+
 })();
